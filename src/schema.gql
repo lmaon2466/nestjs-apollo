@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Comment {
+  """The comment authors user record."""
+  author: User!
+
+  """The comment's content."""
+  content: String!
+
+  """The comment's record uuid."""
+  id: ID!
+}
+
+type Mutation {
+  """Mutation to generate test data records"""
+  generateRecords: [Comment!]!
+}
+
+type Query {
+  """Get all comments authored by a user."""
+  getComments(userId: String!): [Comment!]!
+}
+
+type User {
+  """Comments authored by the user."""
+  comments: Comment
+
+  """The user's first name."""
+  firstname: String!
+
+  """The user's record uuid."""
+  id: ID!
+
+  """The user's last name."""
+  lastname: String!
+
+  """The user's username."""
+  username: String!
+}

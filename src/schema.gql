@@ -19,8 +19,11 @@ type Mutation {
 }
 
 type Query {
+  """Get all comments."""
+  getAllComments: [Comment!]!
+
   """Get all comments authored by a user."""
-  getComments(userId: String!): [Comment!]!
+  getCommentsByAuthor(userId: String!): [Comment!]!
 }
 
 type User {

@@ -34,11 +34,11 @@ export class CommentService {
 
   /**
    * Fetches all comments made by a specific user.
-   * @param userId - The ID of the user.
-   * @returns A promise that resolves to an array of comments made by the user.
+   * @param authorId - The ID of the author.
+   * @returns A promise that resolves to an array of comments made by the author.
    */
-  async getCommentsByAuthor(userId: string): Promise<Comment[]> {
-    return await this.commentData.getCommentsByAuthor(userId);
+  async getCommentsByAuthor(authorId: string): Promise<Comment[]> {
+    return await this.commentData.getCommentsByAuthor(authorId);
   }
 
   /**

@@ -45,7 +45,7 @@ export class AuthorDataSource {
    * Generates author records.
    * @returns The payload of the generated records.
    */
-  generateRecords(): generateRecordsPayload {
+  generateRecords() {
     this.logger.log(`Generating author records`);
     return this.authorRecords.generateAuthorData();
   }

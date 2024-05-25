@@ -74,11 +74,8 @@ export class AuthorResolver {
     name: "generateAuthorRecords",
     description: "Mutation to generate test data records",
   })
-  generateTestAuthorRecords(): generateRecordsPayload {
-    return plainToInstance(
-      generateRecordsPayloadType,
-      this.authorService.generateRecords()
-    );
+  generateTestAuthorRecords(): Author[] {
+    return plainToInstance(Author, this.authorService.generateRecords());
   }
 
   /**

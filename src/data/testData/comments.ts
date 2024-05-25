@@ -26,9 +26,9 @@ export class CommentDataRecords {
     return this.commentRecords[id];
   }
 
-  getCommentsByAuthor(userId: string) {
+  getCommentsByAuthor(authorId: string) {
     return Object.values(this.commentRecords).filter(
-      (comment) => comment.author.id === userId
+      (comment) => comment.author.id === authorId
     );
   }
 
@@ -55,7 +55,7 @@ export class CommentDataRecords {
       }
 
       return Object.values(this.commentRecords).map((record) => ({
-        typename: "Comment",
+        __typename: "Comment",
         ...record,
       }));
     } catch (err: unknown) {

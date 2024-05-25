@@ -30,7 +30,7 @@ export class AuthorDataRecords {
     return Object.values(this.authorRecords);
   }
 
-  generateAuthorData(): generateRecordsPayload {
+  generateAuthorData() {
     for (let i = 0; i < 50; i++) {
       let id = v4();
       this.authorRecords[id] = {
@@ -46,7 +46,10 @@ export class AuthorDataRecords {
       };
     }
 
-    return { ok: true };
+    return Object.values(this.authorRecords).map((record) => ({
+      __typename: "Author",
+      ...record,
+    }));
   }
   catch(err: unknown) {
     console.error(err);

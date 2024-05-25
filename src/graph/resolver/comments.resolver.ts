@@ -78,13 +78,13 @@ export class CommentsResolver {
 
   /**
    * Fetches all comments made by a specific user.
-   * @param userId - The ID of the user.
+   * @param authorId - The ID of the author.
    * @returns A promise that resolves to an array of comments made by the user.
    *
    * Example GraphQL call:
    *
    * query {
-   *   getCommentsByAuthor(userId: "123") {
+   *   getCommentsByAuthor(authorId: "123") {
    *     id
    *     text
    *     authorId
@@ -92,19 +92,19 @@ export class CommentsResolver {
    * }
    */
   @Query(() => [Comment], {
-    description: "Get all comments authored by a user.",
+    description: "Get all comments by an author.",
   })
   async getCommentsByAuthor(
     @Args({
       type: () => String,
-      name: "userId",
+      name: "authorId",
     })
-    userId: string
+    authorId: string
   ): Promise<Comment[]> {
-    const response = await this.commentService.getCommentsByAuthor(userId);
+    const response = await this.commentService.getCommentsByAuthor(authorId);
 
     if (response.length === 0) {
-      this.logger.warn(`No comments found for user: ${userId}`);
+      this.logger.warn(`No comments found for author: ${authorId}`);
       return [];
     }
     return plainToInstance(Comment, response);

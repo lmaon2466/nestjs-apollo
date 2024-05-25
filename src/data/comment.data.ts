@@ -33,12 +33,12 @@ export class CommentDataSource {
 
   /**
    * Fetches all comments made by a specific user.
-   * @param userId - The ID of the user.
-   * @returns A promise that resolves to an array of comments made by the user.
+   * @param authorId - The ID of the author.
+   * @returns A promise that resolves to an array of comments made by the author.
    */
-  async getCommentsByAuthor(userId: string): Promise<any[]> {
-    this.logger.log(`Fetching comments made by user with id ${userId}`);
-    return this.commentRecords.getCommentsByAuthor(userId);
+  async getCommentsByAuthor(authorId: string): Promise<any[]> {
+    this.logger.log(`Fetching comments made by author with id ${authorId}`);
+    return this.commentRecords.getCommentsByAuthor(authorId);
   }
 
   /**

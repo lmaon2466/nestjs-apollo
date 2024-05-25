@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { AuthorDataSource } from "../data/author.data";
 import { Author } from "../graph/entity/author.entity";
 import { CreateAuthorInput } from "../graph/input/create-author.input";
-import { generateRecordsPayload } from "../data/testData/test-types";
 
 /*
  * The purpose of this layer is to house all of the business logic and act
@@ -45,7 +44,7 @@ export class AuthorService {
    * Generates author records.
    * @returns The payload of the generated records.
    */
-  generateRecords(): generateRecordsPayload {
+  generateRecords() {
     return this.authorData.generateRecords();
   }
 }

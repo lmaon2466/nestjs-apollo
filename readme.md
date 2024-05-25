@@ -2,10 +2,6 @@
 
 This is a simple deployment of GraphQL using the NestJS framework. The purpose of this project is to show the structure of graphql and how separation of concerns leads to specific module and file responsibilities, which makes scaling this service manageable.
 
-## Directory Structure
-
-. ├── src │ ├── app │ ├── data │ ├── graph │ ├── service │ └── testData ├── Dockerfile ├── docker-compose.yml └── README.md
-
 ### `src/`
 
 This is the main source directory of the project. It contains all the source code files.

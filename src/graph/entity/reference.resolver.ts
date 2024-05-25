@@ -10,7 +10,7 @@ export class AuthorReferenceResolver {
   constructor(private readonly authorService: AuthorService) {}
 
   @ResolveReference()
-  async getComment(reference: {
+  async getAuthor(reference: {
     __typename: string;
     id: string;
   }): Promise<Author> {

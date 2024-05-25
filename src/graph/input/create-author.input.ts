@@ -43,7 +43,6 @@ export class CreateAuthorInput {
 }
 
 @InputType()
-export class UpdateAuthorInput extends OmitType(
-  CreateAuthorInput,
-  [] as const
-) {}
+export class UpdateAuthorInput extends OmitType(CreateAuthorInput, [
+  "userId",
+] as const) {}

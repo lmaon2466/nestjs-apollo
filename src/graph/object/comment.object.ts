@@ -20,6 +20,13 @@ export class Comment {
   })
   content?: string;
 
+  @Field(() => String, {
+    name: "userId",
+    description: "The user's record uuid.",
+    nullable: false,
+  })
+  userId: string;
+
   @Field(() => User, {
     name: "author",
     description: "The comment authors user record.",

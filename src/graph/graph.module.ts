@@ -1,12 +1,12 @@
 import { Module } from "@nestjs/common";
-import { CommentsResolver } from "./object/comment-reference.resolver";
-import { CommentsQueryResolver } from "./resolver/comments.resolver";
+import { AuthorReferenceResolver } from "./entity/reference.resolver";
 import { ServiceModule } from "../service/service.module";
-import { GqlOptionsFactory } from "@nestjs/graphql";
+import { AuthorResolver } from "./resolver/author.resolver";
+import { CommentsResolver } from "./resolver/comments.resolver";
 
 @Module({
   imports: [ServiceModule],
-  providers: [CommentsQueryResolver, CommentsResolver],
-  exports: [CommentsQueryResolver, CommentsResolver],
+  providers: [AuthorReferenceResolver, AuthorResolver, CommentsResolver],
+  exports: [AuthorReferenceResolver, AuthorResolver, CommentsResolver],
 })
 export class GraphModule {}

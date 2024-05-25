@@ -2,6 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""The author of a body of work."""
+type Author {
+  """The author's genre(s) of work."""
+  genre: [String!]
+
+  """The author's record uuid."""
+  id: ID!
+
+  """The author's user record."""
+  user: User!
+
+  """The author's user record uuid."""
+  userId: String!
+}
+
 type Comment {
   """The comment authors user record."""
   author: User!
@@ -11,16 +26,70 @@ type Comment {
 
   """The comment's record uuid."""
   id: ID!
+
+  """The user's record uuid."""
+  userId: String!
+}
+
+"""The input type for creating an author."""
+input CreateAuthorInput {
+  """The author's first name."""
+  firstname: String!
+
+  """The author's genre(s) of work."""
+  genre: [String!]
+
+  """The author's last name."""
+  lastname: String!
+
+  """The user's record uuid."""
+  userId: String!
+
+  """The author's username."""
+  username: String!
+}
+
+"""The input type for creating a comment."""
+input CreateCommentInput {
+  """The comment's content."""
+  content: String!
+
+  """The user's record uuid."""
+  userId: String!
 }
 
 type Mutation {
+  """Create a new author."""
+  createAuthor(
+    """The input for creating a new author."""
+    input: CreateAuthorInput!
+  ): Author!
+
+  """Create a new comment."""
+  createComment(
+    """The input for creating a new comment."""
+    input: CreateCommentInput!
+  ): Comment!
+
   """Mutation to generate test data records"""
-  generateRecords: [Comment!]!
+  generateAuthorRecords: [Author!]!
+
+  """Mutation to generate test data records"""
+  generateCommentRecords: [Comment!]!
 }
 
 type Query {
+  """Get all authors."""
+  getAllAuthors: [Author!]!
+
   """Get all comments."""
   getAllComments: [Comment!]!
+
+  """Get an author by its ID."""
+  getAuthorByAuthorId(
+    """The ID of the author."""
+    authorId: String!
+  ): Author!
 
   """Get all comments authored by a user."""
   getCommentsByAuthor(userId: String!): [Comment!]!

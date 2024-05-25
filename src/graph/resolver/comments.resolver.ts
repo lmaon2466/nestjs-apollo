@@ -3,18 +3,56 @@ import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { plainToInstance } from "class-transformer";
 import { CommentService } from "../../service/comment.service";
 import { Comment } from "../object/comment.object";
-import {
-  generateRecordsPayload,
-  generateRecordsPayloadType,
-} from "../../data/testData/comments";
+import {} from "../../data/testData/comments";
+import { CreateCommentInput } from "../input/create-comment.input";
+import { generateRecordsPayloadType } from "../../data/testData/test-types";
+import { generateRecordsPayload } from "../../data/testData/test-types";
 
 @Resolver()
-export class CommentsQueryResolver {
+export class CommentsResolver {
   // Logger to log information, warnings, errors etc.
-  private readonly logger: Logger = new Logger(CommentsQueryResolver.name);
+  private readonly logger: Logger = new Logger(CommentsResolver.name);
 
   // Inject the CommentService in the constructor
   constructor(private readonly commentService: CommentService) {}
+
+  /**
+   * Mutation to create a new comment.
+   * @param input - The input for creating a new comment.
+   * @returns A promise that resolves to the created comment.
+   *
+   * Example GraphQL call:
+   *
+   * mutation {
+   *   createComment(input: {
+   *     text: "This is a comment",
+   *     authorId: "123"
+   *   }) {
+   *     id
+   *     text
+   *     authorId
+   *   }
+   * }
+   */
+  @Mutation(() => Comment, {
+    name: "createComment",
+    description: "Create a new comment.",
+  })
+  async createComment(
+    @Args({
+      type: () => CreateCommentInput,
+      name: "input",
+      description: "The input for creating a new comment.",
+      nullable: false,
+    })
+    input: CreateCommentInput
+  ): Promise<Comment> {
+    const response = await this.commentService.createComment(input);
+    if (!response) {
+      return null;
+    }
+    return plainToInstance(Comment, response);
+  }
 
   /**
    * Mutation to generate test data records.
@@ -31,7 +69,7 @@ export class CommentsQueryResolver {
    * }
    */
   @Mutation(() => [Comment], {
-    name: "generateRecords",
+    name: "generateCommentRecords",
     description: "Mutation to generate test data records",
   })
   generateTestCommentRecords(): generateRecordsPayload {

@@ -5,7 +5,7 @@ import { User } from "./user.entity";
 @ObjectType("Author", {
   description: "The author of a body of work.",
 })
-@Directive('@key(fields: "id") @key(fields: "user")')
+@Directive('@key(fields: "id")')
 export class Author {
   __typename: "Author" = "Author" as const;
 
@@ -15,6 +15,13 @@ export class Author {
     nullable: false,
   })
   id: string;
+
+  @Field(() => String, {
+    name: "userId",
+    description: "The author's user record uuid.",
+    nullable: false,
+  })
+  userId: String;
 
   @Field(() => User, {
     name: "user",

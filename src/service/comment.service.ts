@@ -1,20 +1,33 @@
 import { Injectable } from "@nestjs/common/decorators";
 import { CommentDataSource } from "../data/comment.data";
 import { Comment } from "../graph/object/comment.object";
-import { generateRecordsPayload } from "../data/testData/comments";
+import { CreateCommentInput } from "src/graph/input/create-comment.input";
+import { generateRecordsPayload } from "../data/testData/test-types";
 
+/*
+ * The purpose of this layer is to house all of the business logic and act
+ * as a bridge between the data layer and the GraphQL layer.  A method here
+ * call call multiple service layer and data layer methods to accomplish a
+ * single task.  This layer is also responsible for transforming data from
+ * one format to another.
+ */
 @Injectable()
 export class CommentService {
-  // Inject the CommentDataSource in the constructor
   constructor(private readonly commentData: CommentDataSource) {}
+
+  /**
+   * Creates a new comment.
+   * @param input - The input for creating a new comment.
+   * @returns A promise that resolves to the created comment.
+   */
+  async createComment(input: CreateCommentInput): Promise<Comment> {
+    return await this.commentData.createComment(input);
+  }
 
   /**
    * Fetches a comment by its ID.
    * @param id - The ID of the comment.
    * @returns A promise that resolves to the comment with the given ID.
-   *
-   * Example usage:
-   * const comment = await this.getComment('123');
    */
   async getComment(id: string): Promise<Comment> {
     return await this.commentData.getComment(id);
@@ -24,9 +37,6 @@ export class CommentService {
    * Fetches all comments made by a specific user.
    * @param userId - The ID of the user.
    * @returns A promise that resolves to an array of comments made by the user.
-   *
-   * Example usage:
-   * const comments = await this.getCommentsByAuthor('123');
    */
   async getCommentsByAuthor(userId: string): Promise<Comment[]> {
     return await this.commentData.getCommentsByAuthor(userId);
@@ -35,9 +45,6 @@ export class CommentService {
   /**
    * Fetches all comments.
    * @returns A promise that resolves to an array of all comments.
-   *
-   * Example usage:
-   * const comments = await this.getAllComments();
    */
   async getAllComments(): Promise<Comment[]> {
     return await this.commentData.getAllComments();
@@ -46,9 +53,6 @@ export class CommentService {
   /**
    * Generates comment records.
    * @returns The payload of the generated records.
-   *
-   * Example usage:
-   * const recordsPayload = this.generateRecords();
    */
   generateRecords(): generateRecordsPayload {
     return this.commentData.generateRecords();

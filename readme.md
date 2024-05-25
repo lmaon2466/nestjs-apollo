@@ -1,6 +1,6 @@
 # NestJS (code first) GraphQL
 
-This is a brief description of what this project is about and what it does.
+This is a simple deployment of GraphQL using the NestJS framework
 
 ## Directory Structure
 

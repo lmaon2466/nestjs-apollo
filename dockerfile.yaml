@@ -1,0 +1,8 @@
+FROM node:slim
+RUN mkdir -p /usr/src/app
+ADD . /usr/src/app
+COPY packages*.json /usr/src/app/
+WORKDIR /usr/src/app
+RUN apt-get update -y && apt-get install -y openssl
+RUN npm install --force
+CMD ["npm", "run", "start"]

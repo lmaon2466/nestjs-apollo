@@ -1,6 +1,6 @@
 # NestJS (code first) GraphQL
 
-This is a simple deployment of GraphQL using the NestJS framework
+This is a simple deployment of GraphQL using the NestJS framework. The purpose of this project is to show the structure of graphql and how separation of concerns leads to specific module and file responsibilities, which makes scaling this service manageable.
 
 ## Directory Structure
 

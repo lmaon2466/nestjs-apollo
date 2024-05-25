@@ -36,7 +36,7 @@ export class CommentDataRecords {
     return Object.values(this.commentRecords);
   }
 
-  generateCommentData(): generateRecordsPayload {
+  generateCommentData() {
     try {
       for (let i = 0; i < 50; i++) {
         let id = v4();
@@ -54,10 +54,13 @@ export class CommentDataRecords {
         };
       }
 
-      return { ok: true };
+      return Object.values(this.commentRecords).map((record) => ({
+        typename: "Comment",
+        ...record,
+      }));
     } catch (err: unknown) {
       console.error(err);
-      return { ok: false };
+      throw new Error("Failed to generate comment records.");
     }
   }
 }

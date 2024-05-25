@@ -72,11 +72,8 @@ export class CommentsResolver {
     name: "generateCommentRecords",
     description: "Mutation to generate test data records",
   })
-  generateTestCommentRecords(): generateRecordsPayload {
-    return plainToInstance(
-      generateRecordsPayloadType,
-      this.commentService.generateRecords()
-    );
+  generateTestCommentRecords(): Comment[] {
+    return plainToInstance(Comment, this.commentService.generateRecords());
   }
 
   /**

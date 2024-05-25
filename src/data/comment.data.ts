@@ -1,6 +1,6 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { CommentDataRecords } from "./testData/comments";
-import { generateRecordsPayload } from "./testData/test-types";
+import { Comment } from "../graph/object/comment.object";
 
 @Injectable()
 export class CommentDataSource {
@@ -54,7 +54,7 @@ export class CommentDataSource {
    * Generates comment records.
    * @returns The payload of the generated records.
    */
-  generateRecords(): generateRecordsPayload {
+  generateRecords() {
     this.logger.log(`Generating comment records`);
     return this.commentRecords.generateCommentData();
   }

@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common/decorators";
 import { CommentDataSource } from "../data/comment.data";
 import { Comment } from "../graph/object/comment.object";
 import { CreateCommentInput } from "src/graph/input/create-comment.input";
-import { generateRecordsPayload } from "../data/testData/test-types";
 
 /*
  * The purpose of this layer is to house all of the business logic and act
@@ -54,7 +53,7 @@ export class CommentService {
    * Generates comment records.
    * @returns The payload of the generated records.
    */
-  generateRecords(): generateRecordsPayload {
+  generateRecords() {
     return this.commentData.generateRecords();
   }
 }

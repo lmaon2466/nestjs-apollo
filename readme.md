@@ -61,11 +61,11 @@ Then, you can run the application in a Docker container:
 
     docker run -p 3500:3500 my-app
 
-This will start the application and make it available at http://localhost:3000.
+This will start the application and make it available at http://localhost:3500.
 
 Docker Compose
 To run your app with Docker Compose, make sure you have the docker-compose.yml file in your project root, then run:
 
     docker-compose up
 
-This will build your Docker image if it hasn't been built already, then run your app. Your app should now be accessible at http://localhost:3000.
+This will build your Docker image if it hasn't been built already, then run your app. Your app should now be accessible at http://localhost:3500.

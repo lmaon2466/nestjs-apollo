@@ -1,6 +1,5 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { CommentDataRecords } from "./testData/comments";
-import { Comment } from "../graph/object/comment.object";
 
 @Injectable()
 export class CommentDataSource {

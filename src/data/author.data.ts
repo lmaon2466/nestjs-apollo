@@ -1,6 +1,5 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { AuthorDataRecords } from "./testData/author";
-import { generateRecordsPayload } from "./testData/test-types";
 
 @Injectable()
 export class AuthorDataSource {

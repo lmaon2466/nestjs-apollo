@@ -3,10 +3,7 @@ import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { plainToInstance } from "class-transformer";
 import { CommentService } from "../../service/comment.service";
 import { Comment } from "../object/comment.object";
-import {} from "../../data/testData/comments";
 import { CreateCommentInput } from "../input/create-comment.input";
-import { generateRecordsPayloadType } from "../../data/testData/test-types";
-import { generateRecordsPayload } from "../../data/testData/test-types";
 
 @Resolver()
 export class CommentsResolver {

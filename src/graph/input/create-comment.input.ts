@@ -1,4 +1,4 @@
-import { InputType, ID, Field, OmitType } from "@nestjs/graphql";
+import { InputType, Field, OmitType, PartialType } from "@nestjs/graphql";
 
 @InputType("CreateCommentInput", {
   description: "The input type for creating a comment.",
@@ -22,6 +22,6 @@ export class CreateCommentInput {
 }
 
 @InputType()
-export class UpdateCommentInput extends OmitType(CreateCommentInput, [
-  "userId",
-] as const) {}
+export class UpdateCommentInput extends PartialType(
+  OmitType(CreateCommentInput, ["userId"] as const)
+) {}

@@ -4,8 +4,6 @@ import { plainToInstance } from "class-transformer";
 import { AuthorService } from "../../service/author.service";
 import { Author } from "../entity/author.entity";
 import { CreateAuthorInput } from "../input/create-author.input";
-import { generateRecordsPayloadType } from "../../data/testData/test-types";
-import { generateRecordsPayload } from "../../data/testData/test-types";
 
 @Resolver()
 export class AuthorResolver {

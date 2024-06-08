@@ -16,7 +16,7 @@ export class AuthorReferenceResolver {
   }): Promise<Author> {
     return plainToInstance(
       Author,
-      this.authorService.getAuthorById(reference.id)
+      await this.authorService.getAuthorById(reference.id)
     );
   }
 }

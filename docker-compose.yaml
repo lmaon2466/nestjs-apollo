@@ -3,7 +3,5 @@ services:
   nest-apollo:
     ports:
       - 3500:3500
-    environment:
-      PORT: 3500
     build:
       dockerfile: dockerfile.yaml

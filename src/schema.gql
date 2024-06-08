@@ -91,8 +91,27 @@ type Query {
     authorId: String!
   ): Author!
 
-  """Get all comments authored by a user."""
-  getCommentsByAuthor(userId: String!): [Comment!]!
+  """Get all comments by an author."""
+  getCommentsByAuthor(authorId: String!): [Comment!]!
+}
+
+input UpdateAuthorInput {
+  """The author's first name."""
+  firstname: String
+
+  """The author's genre(s) of work."""
+  genre: [String!]
+
+  """The author's last name."""
+  lastname: String
+
+  """The author's username."""
+  username: String
+}
+
+input UpdateCommentInput {
+  """The comment's content."""
+  content: String
 }
 
 type User {
